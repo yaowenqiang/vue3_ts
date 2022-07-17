@@ -2,6 +2,32 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import HelloWorld from './components/HelloWorld.vue'
+import fetchCount from './fetchCount'
+import {  reactive} from 'vue';
+import Counter from './Counter.vue';
+// const count = ref(0);
+
+// const nextCount = computed(() => {
+//     if (count.value !== null) {
+//         return count.value + 1
+//     }
+//     return null;
+// })
+
+interface AppInfo {
+  name: string;
+  slogan: string;
+}
+
+const appinfo = reactive({
+  name: 'Counter',
+  slogan: 'an app you can count on'
+})
+
+// const cb = (initialcount) => {
+//     count.value += initialcount
+// }
+
 </script>
 
 <template>
@@ -14,6 +40,13 @@ import HelloWorld from './components/HelloWorld.vue'
     </a>
   </div>
   <HelloWorld msg="Vite + Vue" />
+  <div>
+    <h1>{{ appinfo.name }}</h1>
+    <h1>{{ appinfo.slogan }}</h1>
+  </div>
+  <Counter
+  :limit="10"
+  ></Counter>
 </template>
 
 <style scoped>
